@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stadium View Bar &amp; Restaurant &middot; Before vs After &middot; AG1 Consulting</title>
+<meta name="description" content="Stadium View is the largest bar in Green Bay, a three-generation Watson family business since 1992, one block from Lambeau Field, with 8,000+ on Instagram and 12,000 sq. ft. of event halls. AI search names other Green Bay sports bars and event venues first. Audit plus a 90-day plan to turn the social audience into search authority.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --field: #1f3d2b;
+  --field-deep: #142a1d;
+  --pine: #2f5a3e;
+  --gold: #c8a14a;
+  --gold-deep: #a37f2f;
+  --cream: #f4efe3;
+  --bone: #e9e0cd;
+  --char: #181410;
+  --char-soft: #3c352b;
+  --brick: #7a3530;
+  --line: #d6c9ab;
+  --green: #3f7a4f;
+  --white: #ffffff;
+  --display: 'Bebas Neue', sans-serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--cream); color: var(--char); font-family: var(--sans); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--field); text-decoration: none; }
+.container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+.topbar { background: var(--field-deep); color: var(--cream); padding: 12px 0; font-size: 13px; }
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.topbar-tag { color: var(--gold); font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; font-size: 11px; }
+
+.hero { padding: 110px 0 80px; background: var(--cream); position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: 5%; right: -10%; width: 700px; height: 700px; background: radial-gradient(circle, rgba(200, 161, 74, 0.18), transparent 65%); filter: blur(60px); pointer-events: none; }
+.hero-grid { max-width: 1040px; margin: 0 auto; position: relative; z-index: 2; }
+.eyebrow { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-bottom: 26px; display: block; }
+.hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(40px, 6vw, 78px); line-height: 1.03; letter-spacing: -0.015em; margin-bottom: 32px; color: var(--field); }
+.hero h1 em { font-style: italic; color: var(--gold-deep); }
+.hero p { color: var(--char-soft); font-size: 19px; max-width: 800px; line-height: 1.55; }
+
+.section { padding: 90px 0; position: relative; }
+.section.alt { background: var(--bone); }
+.section-title { font-family: var(--serif); font-weight: 600; font-size: clamp(32px, 4vw, 56px); letter-spacing: -0.015em; line-height: 1.05; margin-bottom: 18px; color: var(--field); }
+.section-title em { font-style: italic; color: var(--gold-deep); }
+.section-sub { color: var(--char-soft); font-size: 17px; margin-bottom: 56px; max-width: 780px; line-height: 1.6; }
+
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+@media (max-width: 1024px) { .compare-grid { grid-template-columns: 1fr; } }
+.compare-card { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--white); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; }
+.compare-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 20px 56px rgba(20, 42, 29, 0.14); }
+.compare-label { padding: 16px 24px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 700; }
+.compare-label.current { background: rgba(31, 61, 43, 0.08); color: var(--field); border-bottom: 1px solid rgba(31, 61, 43, 0.18); }
+.compare-label.new { background: rgba(200, 161, 74, 0.18); color: var(--gold-deep); border-bottom: 1px solid var(--gold); }
+.compare-preview { aspect-ratio: 16/10; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.compare-preview-content { position: relative; z-index: 2; text-align: center; padding: 32px; }
+.compare-preview-content h3 { font-family: var(--display); font-size: 38px; font-weight: 400; letter-spacing: 2px; }
+.compare-preview-content p { font-family: var(--serif); font-size: 16px; font-style: italic; margin-top: 12px; }
+.compare-preview.current-bg { background: linear-gradient(135deg, var(--bone), var(--cream)); }
+.compare-preview.current-bg .compare-preview-content h3 { color: var(--field); }
+.compare-preview.current-bg .compare-preview-content p { color: var(--char-soft); }
+.compare-preview.new-bg { background: linear-gradient(135deg, var(--pine), var(--field) 60%, var(--field-deep)); }
+.compare-preview.new-bg .compare-preview-content h3 { color: var(--cream); }
+.compare-preview.new-bg .compare-preview-content p { color: rgba(244, 239, 227, 0.88); }
+.compare-body { padding: 28px 32px; }
+.compare-body h4 { font-family: var(--serif); font-size: 26px; font-weight: 600; margin-bottom: 10px; color: var(--field); }
+.compare-body p { color: var(--char-soft); font-size: 14px; margin-bottom: 22px; }
+.compare-body ul { list-style: none; margin-bottom: 24px; }
+.compare-body li { padding: 7px 0; font-size: 14px; color: var(--char-soft); display: flex; align-items: flex-start; gap: 10px; }
+.compare-body li::before { font-size: 12px; margin-top: 2px; flex-shrink: 0; font-weight: 700; }
+.current li::before { content: '\2717'; color: var(--field); }
+.new li::before { content: '\2713'; color: var(--green); }
+.compare-cta { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 2px; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transition: all 0.25s; }
+.cta-current { border: 2px solid var(--field); color: var(--field); }
+.cta-current:hover { background: var(--field); color: var(--cream); }
+.cta-new { background: var(--field); color: var(--cream); }
+.cta-new:hover { background: var(--gold-deep); color: var(--cream); }
+
+.bombshell-section { background: var(--field); color: var(--cream); }
+.bombshell-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; align-items: center; }
+@media (max-width: 1024px) { .bombshell-grid { grid-template-columns: 1fr; gap: 32px; } }
+.bombshell-stat { font-family: var(--display); font-size: clamp(110px, 13vw, 200px); font-weight: 400; line-height: 0.9; color: var(--gold); letter-spacing: 2px; }
+.bombshell-stat-label { font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(244, 239, 227, 0.6); margin-top: 18px; font-weight: 600; }
+.bombshell-content h2 { font-family: var(--serif); font-size: clamp(32px, 4vw, 56px); font-weight: 600; line-height: 1.06; margin-bottom: 26px; color: var(--cream); }
+.bombshell-content h2 em { font-style: italic; color: var(--gold); }
+.bombshell-content p { color: rgba(244, 239, 227, 0.85); font-size: 17px; line-height: 1.7; margin-bottom: 16px; }
+.bombshell-content p strong { color: var(--cream); font-weight: 700; }
+.competitor-list { margin-top: 28px; padding: 22px 26px; background: rgba(200, 161, 74, 0.1); border-left: 2px solid var(--gold); border-radius: 2px; }
+.competitor-list-title { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+.competitor-row { display: flex; justify-content: space-between; padding: 7px 0; font-size: 14px; color: rgba(244, 239, 227, 0.78); border-bottom: 1px solid rgba(200, 161, 74, 0.12); }
+.competitor-row:last-child { border-bottom: none; }
+.competitor-row .rank { color: var(--gold); font-weight: 700; }
+
+.plan-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+@media (max-width: 1024px) { .plan-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .plan-grid { grid-template-columns: 1fr; } }
+.plan-card { padding: 32px; background: var(--white); border: 1px solid var(--line); border-radius: 4px; transition: all 0.3s; position: relative; }
+.plan-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(20, 42, 29, 0.1); }
+.plan-num { font-family: var(--display); font-size: 14px; color: var(--gold-deep); font-weight: 400; margin-bottom: 14px; display: block; letter-spacing: 2px; }
+.plan-card h4 { font-family: var(--serif); font-size: 24px; font-weight: 600; line-height: 1.15; margin-bottom: 12px; color: var(--field); }
+.plan-card p { color: var(--char-soft); font-size: 14px; line-height: 1.6; }
+.plan-week { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-deep); font-weight: 700; margin-top: 18px; display: inline-block; }
+
+.scorecard { border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--white); }
+.scorecard-header { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 22px 32px; background: var(--bone); border-bottom: 1px solid var(--line); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--field); }
+.scorecard-row { display: grid; grid-template-columns: 2fr 1fr 1fr; padding: 18px 32px; border-bottom: 1px solid var(--line); align-items: center; }
+.scorecard-row:last-child { border-bottom: none; }
+.scorecard-row:hover { background: var(--cream); }
+.scorecard-label { font-size: 15px; color: var(--field); }
+.scorecard-cell { font-size: 14px; }
+.scorecard-cell.current { color: var(--field); }
+.scorecard-cell.new { color: var(--green); font-weight: 700; }
+
+.cta-section { padding: 120px 0; text-align: center; background: var(--cream); }
+.cta-section h2 { font-family: var(--serif); font-size: clamp(34px, 4.6vw, 62px); font-weight: 600; letter-spacing: -0.02em; margin-bottom: 26px; line-height: 1.05; color: var(--field); }
+.cta-section h2 em { font-style: italic; color: var(--gold-deep); }
+.cta-section p { color: var(--char-soft); font-size: 17px; margin-bottom: 40px; max-width: 640px; margin-left: auto; margin-right: auto; }
+.cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cta-button { display: inline-flex; align-items: center; gap: 8px; padding: 18px 36px; border-radius: 2px; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.25s; }
+.cta-button.primary { background: var(--field); color: var(--cream); }
+.cta-button.primary:hover { background: var(--gold-deep); transform: translateY(-2px); }
+.cta-button.ghost { border: 2px solid var(--line); color: var(--field); background: var(--white); }
+.cta-button.ghost:hover { border-color: var(--gold); color: var(--gold-deep); }
+
+footer { padding: 32px 0; border-top: 1px solid var(--line); text-align: center; font-size: 12px; color: var(--char-soft); background: var(--bone); }
+footer a { color: var(--field); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <span class="topbar-tag">Search Audit Report &middot; Prepared by AG1 Consulting</span>
+    <span>For the Stadium View Family</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <span class="eyebrow">Prepared for Stadium View Bar &amp; Restaurant &middot; AG1 Consulting</span>
+      <h1>The largest bar in Green Bay. Three Watson generations. 8,000+ on Instagram.<br>AI search names <em>other Green Bay bars first.</em></h1>
+      <p>Stadium View opened in September 1992, one block from Lambeau Field, and has been a Watson family business ever since. Five full-service bars, two floors, 12,000 square feet of event halls, and a Packers gameday crowd that runs six to ten thousand people. The Instagram audience at @stadiumview is past 8,000 and proves the brand demand is real. But when ChatGPT, Perplexity, and Google AI Overviews are asked the buyer queries that drive gameday reservations and event bookings, Stadium View is not the answer. The audience is there. The search authority is not.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Stadium View Bar &amp; Restaurant: <em>before vs after</em></h2>
+    <p class="section-sub">Same family business since 1992. Same largest-bar-in-Green-Bay scale. Same 8,000-strong Instagram audience, same 12,000 square feet of event halls, same one block from Lambeau. Two very different chances of being the venue an AI engine names when a fan or an event planner asks.</p>
+
+    <div class="compare-grid">
+      <div class="compare-card">
+        <div class="compare-label current">Today &middot; Live Site</div>
+        <div class="compare-preview current-bg">
+          <div class="compare-preview-content">
+            <h3>thestadiumview.com</h3>
+            <p>Currently live &middot; Click to view</p>
+          </div>
+        </div>
+        <div class="compare-body current">
+          <h4>What's there now</h4>
+          <p>The site lists the menus, the event halls, and the gameday page. The AEO infrastructure that decides who wins the Packers-gameday-bar query, the Green Bay event-hall query, and the bar-near-Lambeau query is missing.</p>
+          <ul>
+            <li>Invisible in AI search for "Packers gameday bar Green Bay," "bar near Lambeau Field," and "watch party venue Green Bay"</li>
+            <li>The 12,000 sq. ft. event halls have no EventVenue schema, so "Green Bay event hall" and "banquet hall near Lambeau" go to other venues</li>
+            <li>The three-generation Watson family story is not in Person schema, so AI engines cannot cite the ownership the brand is built on</li>
+            <li>8,000+ Instagram followers at @stadiumview, with none of that audience bridged into search authority</li>
+            <li>No dedicated watch-party-venue content despite being the largest bar in Green Bay for exactly that</li>
+            <li>No FAQPage schema, no LocalBusiness schema separating the sports bar from the event halls</li>
+            <li>Live-entertainment history (national concerts, the Jim Rome stop) is not surfaced as Event-type structured data</li>
+            <li>Competitors winning AI Overview citations: 1919 Kitchen &amp; Tap, D2 Sports Pub, Anduzzi's, Hagemeister Park</li>
+          </ul>
+          <a href="https://www.thestadiumview.com/" target="_blank" rel="noopener" class="compare-cta cta-current">View Live Site &rarr;</a>
+        </div>
+      </div>
+
+      <div class="compare-card">
+        <div class="compare-label new">Proposed &middot; Gameday + Event-Hall AEO Build</div>
+        <div class="compare-preview new-bg">
+          <div class="compare-preview-content">
+            <h3>The gameday engine</h3>
+            <p>Click to explore the live demo &rarr;</p>
+          </div>
+        </div>
+        <div class="compare-body new">
+          <h4>What we'd ship</h4>
+          <p>A Packers-gameday-destination landing page, an event-hall and banquet funnel with EventVenue schema, the three-generation Watson family story in Person schema, and the structural data that gets Stadium View cited for the gameday and event queries that drive bookings. No platform migration. Deploys in less than 7 days.</p>
+          <ul>
+            <li>Dedicated Packers-gameday-destination page targeting "bar near Lambeau Field" and "Packers gameday bar Green Bay"</li>
+            <li>Event-hall and banquet funnel with EventVenue schema for "Green Bay event hall" and "banquet hall Green Bay"</li>
+            <li>Three-generation Watson family story built into Person schema, founders through current owners</li>
+            <li>8,000-Instagram-to-search-authority bridge: the audience that proves demand, wired into citation density</li>
+            <li>Watch-party-venue content for home games and away games, the query Stadium View should own outright</li>
+            <li>Live-entertainment Event schema for concerts, tailgates, and the venue's event history</li>
+            <li>Performance gate: cited in 4 of 5 buyer queries by day 90, or the work continues at no additional cost</li>
+          </ul>
+          <a href="../" class="compare-cta cta-new">Open the Demo &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bombshell-section">
+  <div class="container">
+    <div class="bombshell-grid">
+      <div>
+        <div class="bombshell-stat">1/5</div>
+        <div class="bombshell-stat-label">AI search citations for Stadium View across Packers gameday, bar-near-Lambeau, Green Bay event hall, and watch-party-venue queries</div>
+      </div>
+      <div class="bombshell-content">
+        <h2>Stadium View has 8,000+ on Instagram and is the largest bar in Green Bay.<br>AI search still names <em>other venues first.</em></h2>
+        <p>We asked ChatGPT, Perplexity, and Google AI Overviews five buyer queries: Packers gameday bar Green Bay, bar near Lambeau Field, Green Bay event hall, banquet hall Green Bay, watch party venue Green Bay. Stadium View surfaced in <strong>one of five</strong>, and only on a general Green Bay bar list, never as the answer to the gameday or event query.</p>
+        <p>The other four answers went to 1919 Kitchen &amp; Tap, D2 Sports Pub, Anduzzi's, and Hagemeister Park. None of them is the largest bar in Green Bay. None has a three-generation family story or an 8,000-strong Instagram audience. They are winning because their structured data tells AI engines they exist for those queries. <strong>The fix is not a rebuild. It is schema, a gameday-destination page, an event-hall funnel, and bridging the social audience into search.</strong></p>
+        <div class="competitor-list">
+          <div class="competitor-list-title">Who currently gets cited for "Packers gameday bar" + "Green Bay event hall"</div>
+          <div class="competitor-row"><span>1919 Kitchen &amp; Tap (inside Lambeau Field)</span><span class="rank">#1</span></div>
+          <div class="competitor-row"><span>D2 Sports Pub (Armed Forces Dr)</span><span class="rank">#2</span></div>
+          <div class="competitor-row"><span>Anduzzi's Sports Club</span><span class="rank">#3</span></div>
+          <div class="competitor-row"><span>Hagemeister Park (events + bar)</span><span class="rank">#4</span></div>
+          <div class="competitor-row"><span>Stadium View Bar &amp; Restaurant</span><span class="rank">Tied #5</span></div>
+          <div class="competitor-row"><span>Curly's Pub &middot; The Bar &middot; Kis Brau</span><span class="rank">Outside top 5</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <h2 class="section-title">The <em>90-day</em> plan.</h2>
+    <p class="section-sub">Four phases. The Packers-gameday-destination page ships in less than 7 days. AEO infrastructure and EventVenue schema deploy in week two. The event-hall funnel and the Instagram-to-search bridge follow. By day 90, Stadium View is cited in 4 of 5 buyer queries.</p>
+
+    <div class="plan-grid">
+      <div class="plan-card">
+        <span class="plan-num">Phase 01</span>
+        <h4>Packers Gameday Destination Page</h4>
+        <p>A dedicated gameday page targeting "bar near Lambeau Field" and "Packers gameday bar Green Bay." Five-bar layout, gameday menu, reservations, one-block-from-Lambeau positioning. LocalBusiness and BarOrPub schema layered.</p>
+        <span class="plan-week">Week 1</span>
+      </div>
+      <div class="plan-card">
+        <span class="plan-num">Phase 02</span>
+        <h4>AEO Infrastructure + EventVenue Schema</h4>
+        <p>FAQPage schema, LocalBusiness schema separating the sports bar from the event halls, and EventVenue schema on the 12,000 sq. ft. banquet space. 40-word answer blocks on top pages. Search Console and Bing wired.</p>
+        <span class="plan-week">Week 2 to 3</span>
+      </div>
+      <div class="plan-card">
+        <span class="plan-num">Phase 03</span>
+        <h4>Event-Hall + Watch-Party Funnels</h4>
+        <p>An event-hall and banquet booking funnel with capacities and an inquiry form, plus dedicated watch-party-venue content for home and away games. The two highest-margin surfaces Stadium View is currently invisible for.</p>
+        <span class="plan-week">Weeks 3 to 6</span>
+      </div>
+      <div class="plan-card">
+        <span class="plan-num">Phase 04</span>
+        <h4>Watson Story + Social-to-Search Bridge</h4>
+        <p>The three-generation Watson family story built into Person schema and a heritage page. The 8,000-strong Instagram audience bridged into citation density: local press, Travel Wisconsin, Discover Green Bay, Packers fan media.</p>
+        <span class="plan-week">Weeks 4 to 12</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">The <em>scorecard.</em></h2>
+    <p class="section-sub">Every signal AI search, a visiting Packers fan, and a Green Bay event planner check, the current thestadiumview.com graded against the 90-day build.</p>
+
+    <div class="scorecard">
+      <div class="scorecard-header">
+        <div>Signal</div>
+        <div>Today</div>
+        <div>After plan</div>
+      </div>
+      <div class="scorecard-row"><div class="scorecard-label">Three-generation Watson family Person schema</div><div class="scorecard-cell current">&times; Missing</div><div class="scorecard-cell new">&check; Live</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Packers-gameday-destination landing page</div><div class="scorecard-cell current">&times; Generic page</div><div class="scorecard-cell new">&check; Pillar</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Event-hall + banquet EventVenue schema</div><div class="scorecard-cell current">&times; Missing</div><div class="scorecard-cell new">&check; Live</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">"Bar near Lambeau Field" search capture</div><div class="scorecard-cell current">&times; Not ranking</div><div class="scorecard-cell new">Top 3 target</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Watch-party-venue content</div><div class="scorecard-cell current">&times; None</div><div class="scorecard-cell new">&check; Funnel</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Live-entertainment Event schema</div><div class="scorecard-cell current">&times; Buried</div><div class="scorecard-cell new">&check; Surfaced</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">8,000+ Instagram audience bridged to search</div><div class="scorecard-cell current">Not connected</div><div class="scorecard-cell new">&check; Citation density</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">FAQPage + LocalBusiness schema</div><div class="scorecard-cell current">&times; Light</div><div class="scorecard-cell new">&check; Full</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">AI Overview citation rate (5 queries)</div><div class="scorecard-cell current">1 of 5</div><div class="scorecard-cell new">4 of 5</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">40-word answer blocks (AI lift)</div><div class="scorecard-cell current">&times; None</div><div class="scorecard-cell new">&check; 10+ pages</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Discover Green Bay + Travel WI citations</div><div class="scorecard-cell current">Directory only</div><div class="scorecard-cell new">8+ schema-cited</div></div>
+      <div class="scorecard-row"><div class="scorecard-label">Performance gate</div><div class="scorecard-cell current">None</div><div class="scorecard-cell new">&check; 4 of 5 or work continues</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>The crowd is real. The family is real.<br>The <em>search</em> isn't.</h2>
+    <p>1919 Kitchen &amp; Tap and D2 are not winning on size, family history, or audience. They are winning on schema, on a focused gameday funnel, and on citation density. Stadium View has more raw asset than any of them. Let's put it in front of AI search.</p>
+    <div class="cta-buttons">
+      <a href="mailto:info@andreicopy.net" class="cta-button primary">Book the Strategy Call &rarr;</a>
+      <a href="../" class="cta-button ghost">Open the Demo &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>AG1 Consulting &middot; Andrei Givero &middot; info@andreicopy.net &middot; <a href="https://andrei170.github.io/ag1/">andrei170.github.io/ag1</a></span>
+</footer>
+
+</body>
+</html>
