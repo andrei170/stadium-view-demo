@@ -84,6 +84,15 @@ header { position: sticky; top: 0; z-index: 50; background: var(--cream); paddin
 .trust-item .num { font-family: var(--display); font-size: 54px; color: var(--field); display: block; line-height: 1; letter-spacing: 1px; }
 .trust-item .lbl { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--char-soft); margin-top: 12px; font-weight: 600; }
 
+.press { background: var(--field); padding: 84px 0; text-align: center; }
+.press h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 3.8vw, 46px); line-height: 1.08; color: var(--white); letter-spacing: -0.015em; margin-bottom: 44px; }
+.press h2 em { font-style: italic; color: var(--gold); }
+.press-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 880px; margin: 0 auto; }
+@media (max-width: 768px) { .press-grid { grid-template-columns: 1fr; gap: 20px; } }
+.press-item { border: 1px solid rgba(200, 161, 74, 0.34); border-radius: 4px; padding: 32px 24px; }
+.press-pub { font-family: var(--display); font-size: 26px; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 12px; }
+.press-cite { font-size: 14px; color: var(--white); line-height: 1.5; font-style: italic; }
+
 section { padding: 100px 0; }
 .section-header { text-align: center; max-width: 780px; margin: 0 auto 64px; }
 .section-eyebrow { font-family: var(--display); font-size: 12px; color: var(--gold-deep); letter-spacing: 0.26em; margin-bottom: 18px; display: inline-block; }
@@ -358,6 +367,27 @@ footer a:hover { color: var(--gold); }
     <div class="trust-item">
       <span class="num">8,000+</span>
       <div class="lbl">Instagram Community at @stadiumview</div>
+    </div>
+  </div>
+</section>
+
+<section class="press">
+  <div class="container">
+    <span class="section-eyebrow" style="color: var(--gold);">National Recognition</span>
+    <h2>Named among the best sports bars <em>in the country.</em></h2>
+    <div class="press-grid">
+      <div class="press-item">
+        <div class="press-pub">Forbes</div>
+        <div class="press-cite">"#1 Sports Bar in America"</div>
+      </div>
+      <div class="press-item">
+        <div class="press-pub">Esquire</div>
+        <div class="press-cite">Top 100 Bars in the Nation</div>
+      </div>
+      <div class="press-item">
+        <div class="press-pub">MSN</div>
+        <div class="press-cite">Top 10 Sports Bars in America</div>
+      </div>
     </div>
   </div>
 </section>
